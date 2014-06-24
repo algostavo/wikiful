@@ -1,8 +1,11 @@
-<div>
-	<h1><%= @category.title %></h1>
-	<p>Published<%= @article.created_at.strftime('%b %d, %Y') %></p>
-	<p>Filed under: <% @article.categories.each do |category| %>
-		<% article.title %>&nbsp;<% end %>
-	</p>
-	<div><%=@category.article %></div>
-</div>
+
+	<h1><%= @category.name %> Articles</h1>
+	<h3>There are <%= @category.articles.count %> articles filed under <%= @category.name %></h3>
+	<ul>
+		<% @category.articles.order(:title).each do |article| %>
+			<h4>
+				<%= link_to article.title, article %> 
+			</h4>	
+	<% end %>
+	
+	</ul>
