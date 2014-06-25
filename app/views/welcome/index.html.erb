@@ -1,2 +1,20 @@
-<h1>Welcome#index</h1>
-<p>This is what holds our landing page. Someday this will be awesome.</p>
+<h1>Welcome to Wikiful</h1>
+	<h3>Here are some recent articles being read</h3>
+	
+	<% @article_recent = Article.order('created_at DESC').limit(5) %>
+	<% @article_recent.each do |article| %>
+	<ul>	
+		<h4><%= link_to article.title, article %><h4>
+			
+				<p> Published on <%= article.created_at.strftime('%b, %d, %Y') %></p>
+					
+					<p> Filed under <%= article.categories.each do |category| %>
+									<%= link_to category.name, category %>
+									&nbsp;
+									<% end %>
+					</p>
+					
+					<p><%= truncate(article.content, length: 100) %></p>
+					
+	</ul>
+<% end %>
