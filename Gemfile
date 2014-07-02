@@ -47,3 +47,7 @@ gem 'less-rails'
 gem 'therubyracer'
 
 
+# gem 'rails_12_factor', group: (optimizes Rails for Heroku)
+group :production do
+  gem 'rails_12factor'
+end
